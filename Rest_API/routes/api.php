@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DummyAPIController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\CountryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get("data",[DummyAPIController::class,'getData']);
 Route::get("device/{id?}",[DeviceController::class,'list']);
+Route::get("country",[CountryController::class,'all']);
