@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("data",[DummyAPIController::class,'getData']);
 Route::get("device/{id?}",[DeviceController::class,'list']);
 Route::get("country",[CountryController::class,'all']);
+Route::get("country/{id}",[CountryController::class,'countrybyid']);
+Route::post("country",[CountryController::class,'savecountry']);

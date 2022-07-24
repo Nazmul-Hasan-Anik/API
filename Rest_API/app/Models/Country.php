@@ -9,10 +9,10 @@ class Country extends Model
 {
     use HasFactory;
     protected $table='_z_country';
+    public $timestamps=false;
     protected $fillable=[
 
-        	'id',
-          'iso',
+        	'iso',
           'name',
           'dname',
           'iso3',
@@ -23,7 +23,7 @@ class Country extends Model
           'register_by',
           'modified',
           '	modified_by',
-          'record_deleted',
+          
 
 
 
