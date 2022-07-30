@@ -6,6 +6,7 @@ use App\Http\Controllers\DummyAPIController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\ApiController;
 use App\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -17,27 +18,12 @@ use App\Models\User;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get("data",[DummyAPIController::class,'getData']);
-Route::get("device/{id?}",[DeviceController::class,'list']);
-Route::get("country",[CountryController::class,'all']);
-Route::get("country/{id}",[CountryController::class,'countrybyid']);
-Route::post("country",[CountryController::class,'savecountry']);
-//API route for register new user
-Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'register']);
-//API route for login user
-Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login']);
 
-//Protecting Routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/profile', function(Request $request) {
-        return auth()->user();
-    });
-
-    Route::resource('programs', App\Http\Controllers\API\ProgramController::class);
-
-    // API route for logout user
-    Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);});
+//API PHASE-1
+Route::get('list-employees',[ApiController::class,"listEmployee"]);
+Route::get('single-employee/{id}',[ApiController::class,"singleEmployee"]);
+Route::post('add-employee',[ApiController::class,"createEmployee"]);
+Route::put('update-employee/{id}',[ApiController::class,"updateEmployee"]);
