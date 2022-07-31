@@ -41,7 +41,7 @@ class ApiController extends Controller
 
       // LIST API - GET
       // URL: http://127.0.0.1:8000/api/list-employees
-      public function listEmployees()
+      public function listEmployee()
       {
           $employees = Employee::get();
 
@@ -54,7 +54,7 @@ class ApiController extends Controller
 
       // SINGLE DETAIL API - GET
       // URL: http://127.0.0.1:8000/api/single-employee/20
-      public function getSingleEmployee($id)
+      public function SingleEmployee($id)
       {
           if (Employee::where("id", $id)->exists()) {
 
